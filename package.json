@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "axios": "^0.21.1",
+    "ps-node": "^0.1.6",
+    "wake_on_lan": "^1.0.0"
+  },
+  "name": "solarmining",
+  "version": "1.0.0",
+  "main": "startMiningLocal.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}
