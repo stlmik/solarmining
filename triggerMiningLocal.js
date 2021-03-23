@@ -69,7 +69,7 @@ function stopMining(processes) {
 
 
 //check if the rig shall be mining and start/stop it if necessary
-vrmUtils.isMiningStartConditionMet(0.2, 75).then(shallMine => {
+vrmUtils.isMiningStartConditionMet(0.2, 85).then(shallMine => {
         checkMiningRunning(shallMine);
     }
 )
