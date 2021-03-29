@@ -20,7 +20,7 @@ function wakeUp(macAddr) {
 vrmUtils.setCredentials(config.vrm.username, config.vrm.password);
 
 
-vrmUtils.isMiningStartConditionMet(0.2, 85).then(result => {
+vrmUtils.isMiningStartConditionMet(0.2, 55).then(result => {
         if (result) {
             console.log("STARTING miner...")
             wakeUp('2C:F0:5D:A9:13:67');
