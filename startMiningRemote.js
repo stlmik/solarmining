@@ -2,7 +2,6 @@ const wol = require('wake_on_lan');
 const vrmUtils = require("./lib/vrmUtils");
 var config = require('./config');
 
-// WOL methods
 
 //wakes up the computer with given mac address
 function wakeUp(macAddr) {
@@ -18,12 +17,12 @@ function wakeUp(macAddr) {
 }
 
 vrmUtils.setCredentials(config.vrm.username, config.vrm.password);
+vrmUtils.setVRMParams(config.vrm.baseUrl, config.vrm.installId, config.vrm.batteryId);
 
-
-vrmUtils.isMiningStartConditionMet(0.2, 75).then(result => {
+vrmUtils.isMiningStartConditionMet(config.threshold.sunshineYieldKw, config.threshold.minBatteryPowerOn).then(result => {
         if (result) {
             console.log("STARTING miner...")
-            wakeUp('2C:F0:5D:A9:13:67');
+            wakeUp(config.threshold.macAddress);
         } else {
             console.log("NOT yet starting miner...");
         }

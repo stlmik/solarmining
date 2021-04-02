@@ -4,15 +4,14 @@ const ps = require('ps-node');
 const { exec } = require("child_process");
 var config = require('./config');
 
-const MINING_PROCESS_NAME = "t-rex";
-const MINING_BATCH_NAME = "startMiner.bat";
 
 vrmUtils.setCredentials(config.vrm.username, config.vrm.password);
+vrmUtils.setVRMParams(config.vrm.baseUrl, config.vrm.installId, config.vrm.batteryId);
 
 function checkMiningRunning(shallMine) {
 
     ps.lookup({
-        command: MINING_PROCESS_NAME,
+        command: config.miner.processName,
     }, function(err, resultList ) {
         if (err) {
             throw new Error( err );
@@ -33,7 +32,7 @@ function checkMiningRunning(shallMine) {
 
 function startMining() {
     console.log("Starting miner...");
-    exec(MINING_BATCH_NAME, (error, stdout, stderr) => {
+    exec(config.miner.startBatchName, (error, stdout, stderr) => {
         if (error) {
             console.log(`error: ${error.message}`);
             return;
@@ -67,9 +66,8 @@ function stopMining(processes) {
 
 }
 
-
 //check if the rig shall be mining and start/stop it if necessary
-vrmUtils.isMiningStartConditionMet(0.2, 85).then(shallMine => {
+vrmUtils.isMiningStartConditionMet(config.threshold.sunshineYieldKw, config.threshold.minBatteryStartMine).then(shallMine => {
         checkMiningRunning(shallMine);
     }
 )
