@@ -50,5 +50,8 @@ See documentation of [VRM API](https://docs.victronenergy.com/vrmapi/overview.ht
 - Requires Victron VRM for obtaining information about solar yield and battery status
 
 
+##TODO
+- Configurable ability to turn off the computer
+
 
 

@@ -16,6 +16,7 @@ function wakeUp(macAddr) {
     var magic_packet = wol.createMagicPacket(macAddr);
 }
 
+console.log("address:" + config.threshold.macAddress);
 wakeUp(config.threshold.macAddress);
 
 

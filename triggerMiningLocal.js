@@ -5,8 +5,10 @@ const { exec } = require("child_process");
 var config = require('./config');
 
 
+
 vrmUtils.setCredentials(config.vrm.username, config.vrm.password);
 vrmUtils.setVRMParams(config.vrm.baseUrl, config.vrm.installId, config.vrm.batteryId);
+
 
 function checkMiningRunning(shallMine) {
 
@@ -34,14 +36,14 @@ function startMining() {
     console.log("Starting miner...");
     exec(config.miner.startBatchName, (error, stdout, stderr) => {
         if (error) {
-            console.log(`error: ${error.message}`);
+            //console.log(`error: ${error.message}`);
             return;
         }
         if (stderr) {
-            console.log(`stderr: ${stderr}`);
+            //console.log(`stderr: ${stderr}`);
             return;
         }
-        console.log(`stdout: ${stdout}`);
+        //console.log(`stdout: ${stdout}`);
     });
 
 }
@@ -66,8 +68,13 @@ function stopMining(processes) {
 
 }
 
+function testTest() {
+    return 1;
+}
+
 //check if the rig shall be mining and start/stop it if necessary
 vrmUtils.isMiningStartConditionMet(config.threshold.sunshineYieldKw, config.threshold.minBatteryStartMine).then(shallMine => {
-        checkMiningRunning(shallMine);
-    }
+      checkMiningRunning(shallMine);
+  }
 )
+
