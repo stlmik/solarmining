@@ -17,7 +17,7 @@ function wakeUp(macAddr) {
 }
 
 console.log("address:" + config.threshold.macAddress);
-wakeUp(config.threshold.macAddress);
+wakeUp(config.miner.macAddress);
 
 
 
